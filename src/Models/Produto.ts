@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 
 
-type Produto = {
+export type Produto = {
   nome: string
   descricao: string
   img: string
@@ -30,4 +30,4 @@ const produtoSchema = new Schema(
   }
 )
 
-export const produtos = mongoose.model('produtos', produtoSchema)
+export const produtos = mongoose.model<Produto>('produtos', produtoSchema)
