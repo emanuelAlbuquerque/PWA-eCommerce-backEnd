@@ -1,12 +1,12 @@
 import express from 'express';
 import { conectedBd } from '../config/conexaoBd';
-import { router} from '../Routes'
+import { ProdutosRouter } from '../Routes/ProdutosRouter'
 
 
 export const app = express();
 conectedBd()
 app.use(express.json())
-app.use(router)
+app.use(ProdutosRouter)
 
 
 
