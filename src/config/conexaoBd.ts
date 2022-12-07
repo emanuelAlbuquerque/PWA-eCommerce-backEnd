@@ -1,7 +1,13 @@
-import mongoose from 'mongoose'
-
+import mongoose, { Error } from 'mongoose'
 const password = 'admin'
 
-mongoose.connect(`mongodb+srv://admin:${password}@pwa-ecommerce.wvr2cnv.mongodb.net/PWA-Ecommerce`)
+export const conectedBd = () => {
 
-export const bd = mongoose.connection
+  console.log('Conectando database...')
+
+  mongoose.connect(
+    `mongodb+srv://admin:${password}@pwa-ecommerce.wvr2cnv.mongodb.net/PWA-Ecommerce`
+  )
+  .then(() => console.log('MongoDB Atlas conectado'))
+  .catch((error : Error) => console.log(`${error.message} - Erro ao conectar o MongoDB`))
+}
