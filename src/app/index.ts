@@ -1,13 +1,10 @@
 import express from 'express';
-import { bd } from '../config/conexaoBd';
+import { conectedBd } from '../config/conexaoBd';
 import { router} from '../Routes'
 
-bd.on('error', console.log.bind("Erro de conexão"))
-bd.once('open', () => {
-  console.log('conexão com o banco feita com sucesso')
-})
 
 export const app = express();
+conectedBd()
 app.use(express.json())
 app.use(router)
 
