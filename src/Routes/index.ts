@@ -1,12 +1,12 @@
 import { Request, Response } from 'express'
 import { Router } from 'express'
-import { listarProdutos } from '../Controllers/ProdutoControleer'
+import { listarProdutos, listarProdutoPorId, cadastrarProduto, deletarProduto, atualizarProduto } from '../Controllers/ProdutoControleer'
 
 export const router = Router()
 
-router.get('/', (req: Request, res: Response) => {
-  res.status(200).send({titulo: 'Produtos disponiveis'})
-})
-
 
 router.get('/listarProdutos', listarProdutos)
+router.get('/produto/:id', listarProdutoPorId)
+router.post('/cadastrarProduto', cadastrarProduto)
+router.delete('/deletarProduto/:id', deletarProduto)
+router.put('/atualizarProduto/:id', atualizarProduto)
