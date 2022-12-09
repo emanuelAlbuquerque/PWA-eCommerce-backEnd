@@ -11,22 +11,34 @@ export type Produto = {
   ratings: number
   defaultRatings: number
   quantidadeVendas: number
+  cor: string,
+  quantidade: number,
+  tamanho: string,
+  marca: string,
+  categoria: {
+    _id: Schema.Types.ObjectId,
+    nome: string
+  }
 }
 
 
 
-const produtoSchema = new Schema(
+const produtoSchema: Schema = new Schema(
   {
     nome: {type: String, required: true},
     descricao: { type: String, required: true },
     img: { type: String, required: true },
     preco: { type: Number, required: true },
     precoTotal: {type: Number},
+    quantidadeVendas: {type: Number},
     desconto: {type: Number},
     ratings: {type: Number},
     defaultRatings: {type: Number, required: true},
-    quantidadeVendas: {type: Number},
-
+    quantidade: { type: Number, required: true },
+    tamanho: { type: String, required: true },
+    cor: { type: String, required: true },
+    marca: { type: String, required: true },
+    categoria: { type: Schema.Types.ObjectId, ref: 'categories', required: true }
   }
 )
 
