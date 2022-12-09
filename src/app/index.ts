@@ -1,5 +1,6 @@
 import express from 'express';
 import { conectedBd } from '../config/conexaoBd';
+import { CategoriasRouter } from '../Routes/CategoriasRouter';
 import { ProdutosRouter } from '../Routes/ProdutosRouter'
 
 
@@ -7,6 +8,8 @@ export const app = express();
 conectedBd()
 app.use(express.json())
 app.use(ProdutosRouter)
+app.use(CategoriasRouter)
+
 
 
 
