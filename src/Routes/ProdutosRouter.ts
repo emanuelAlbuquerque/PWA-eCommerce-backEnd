@@ -5,7 +5,7 @@ export const ProdutosRouter = Router()
 
 
 ProdutosRouter.get('/listarProdutos', listarProdutos)
-ProdutosRouter.get('/produto/:id', listarProdutoPorId)
 ProdutosRouter.post('/cadastrarProduto', cadastrarProduto)
+ProdutosRouter.get('/produto/:id', listarProdutoPorId)
 ProdutosRouter.delete('/deletarProduto/:id', deletarProduto)
 ProdutosRouter.put('/atualizarProduto/:id', atualizarProduto)
