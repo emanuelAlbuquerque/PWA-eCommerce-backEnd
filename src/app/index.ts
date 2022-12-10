@@ -1,6 +1,8 @@
 import express from 'express';
 import { conectedBd } from '../config/conexaoBd';
+import { AvaliacaosRouter } from '../Routes/AvaliacoesRouter';
 import { CategoriasRouter } from '../Routes/CategoriasRouter';
+import { CuponsRouter } from '../Routes/CupomRouter';
 import { ProdutosRouter } from '../Routes/ProdutosRouter'
 
 
@@ -9,6 +11,8 @@ conectedBd()
 app.use(express.json())
 app.use(ProdutosRouter)
 app.use(CategoriasRouter)
+app.use(CuponsRouter)
+app.use(AvaliacaosRouter)
 
 
 
