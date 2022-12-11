@@ -10,8 +10,15 @@ import { produtos } from "../Models/Produto";
 // https://github.com/Automattic/mongoose/issues/4192
 
 
+// https://pt.stackoverflow.com/questions/391469/inserir-valor-no-array-mongoose - Pode ser util para a api de avaliações
+
+
 export async function listarProdutos(req: Request, res: Response){
   const listaProdutos = await produtos.find().populate('categoria').clone()
+
+  if (!listaProdutos) {
+    return res.status(404).send('Lista vazia')
+  }
   return res.status(200).send(listaProdutos)
 } 
 
@@ -32,8 +39,13 @@ export async function listarProdutoPorId(req: Request, res: Response) {
 } 
 
 export async function cadastrarProduto(req: Request, res: Response) {
+  try {
     const produto = await produtos.create(req.body)
-    return res.status(201).send('Produto cadastrado com sucesso').json(produto)
+    return res.status(201).send('Produto cadastrado com sucesso')
+
+  } catch (err) {
+    return res.status(500).send(`${err} - Erro ao cadastrar o Produto`)
+  }
 }
 
 
@@ -46,7 +58,7 @@ export async function deletarProduto(req: Request, res: Response): Promise<Respo
       return res.status(404).send({ mensage: `Produto não encontrado para ser deletado` })
     }
 
-    return res.status(200).send('Produto deletado com suscesso').json(produto)
+    return res.status(200).send('Produto deletado com suscesso')
 
   } catch (error) {
     return res.status(404).send({ mensage: `${error} - Verifique o ID` })
@@ -63,7 +75,7 @@ export async function atualizarProduto(req: Request, res: Response): Promise<Res
       return res.status(404).send({ mensage: `Produto não encontrado para ser Atualizado` })
     }
 
-    return res.status(200).send('Produto atualizado com suscesso').json(produto)
+    return res.status(200).send('Produto atualizado com suscesso')
   } catch (error) {
     return res.status(404).send({ mensage: `${error} - Verifique o ID` })
   }
