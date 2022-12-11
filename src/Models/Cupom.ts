@@ -18,7 +18,7 @@ const cupomSchema: Schema = new Schema(
     dataValidade: { type: String, required: true },
     status: { type: String, required: true },
     desconto: { type: Number, required: true }
-  }
+  }, { versionKey: false }
 )
 
 export const cupons = mongoose.model<Cupom>('cupons', cupomSchema)

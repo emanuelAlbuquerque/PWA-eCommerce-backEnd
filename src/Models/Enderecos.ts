@@ -23,7 +23,7 @@ const enderecosSchema: Schema = new Schema(
         numero: { type: String, required: true }
       }
     ]
-  }
+  }, { versionKey: false }
 )
 
 export const enderecos = mongoose.model<Enderecos>('avaliacoes', enderecosSchema)

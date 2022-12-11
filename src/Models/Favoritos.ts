@@ -15,7 +15,7 @@ const favoritoSchema: Schema = new Schema(
         produto: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'produtos' },
       }
     ]
-  }
+  }, { versionKey: false }
 )
 
 export const carrinho = mongoose.model<Favoritos>('categories', favoritoSchema)

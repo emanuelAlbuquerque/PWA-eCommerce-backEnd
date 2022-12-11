@@ -22,7 +22,7 @@ const avaliacoesSchema: Schema = new Schema(
     }],
     ratings: { type: Number, required: true },
     dataPostagem: { type: Date, default: Date}
-  }
+  }, { versionKey: false }
 )
 
 export const avaliacoes = mongoose.model<Avaliacao>('avaliacoes', avaliacoesSchema)

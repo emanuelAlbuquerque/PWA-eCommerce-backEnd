@@ -39,7 +39,7 @@ const produtoSchema: Schema = new Schema(
     cor: { type: String, required: true },
     marca: { type: String, required: true },
     categoria: { type: Schema.Types.ObjectId, ref: 'categories', required: true }
-  }
+  }, { versionKey: false }
 )
 
 export const produtos = mongoose.model<Produto>('produtos', produtoSchema)

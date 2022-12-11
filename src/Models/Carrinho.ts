@@ -5,19 +5,20 @@ import { Produto } from "./Produto";
 interface Carrinho {
   produto: Produto[]
   quantidade: number
+  usuario: string
 }
 
 
 const carrinhoSchema: Schema = new Schema(
   {
-    usuario: { type: String, required: true, ref: 'usuarios'},
+    _id: { type: String, required: true },
     produtos: [
       {
-        produto: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'produtos' },
+        produto: { type: String, required: true, ref: 'produtos' },
         quantidade: { type: Number, required: true },
       }
     ]
-  }
+  }, { _id: false, versionKey: false }
 )
 
-export const carrinho = mongoose.model<Carrinho>('categories', carrinhoSchema)
+export const carrinho = mongoose.model<Carrinho>('carrinho', carrinhoSchema)
