@@ -3,13 +3,13 @@ import { Produto } from "./Produto";
 
 
 interface Favoritos {
-  produto: Produto[]
+  produtos: Produto[]
 }
 
 
 const favoritoSchema: Schema = new Schema(
   {
-    usuario: { type: String, required: true, ref: 'usuarios' },
+    _id: { type: String, required: true, lowercase: true },
     produtos: [
       {
         produto: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'produtos' },
@@ -18,4 +18,4 @@ const favoritoSchema: Schema = new Schema(
   }, { versionKey: false }
 )
 
-export const carrinho = mongoose.model<Favoritos>('categories', favoritoSchema)
+export const favoritos = mongoose.model<Favoritos>('favoritos', favoritoSchema)
