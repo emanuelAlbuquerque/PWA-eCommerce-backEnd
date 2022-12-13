@@ -11,14 +11,14 @@ interface Carrinho {
 
 const carrinhoSchema: Schema = new Schema(
   {
-    _id: { type: String, required: true },
+    _id: { type: String, required: true, lowercase: true },
     produtos: [
       {
         produto: { type: String, required: true, ref: 'produtos' },
         quantidade: { type: Number, required: true },
       }
     ]
-  }, { _id: false, versionKey: false }
+  }, { versionKey: false }
 )
 
-export const carrinho = mongoose.model<Carrinho>('carrinho', carrinhoSchema)
+export const carrinhos = mongoose.model<Carrinho>('carrinhos', carrinhoSchema)
