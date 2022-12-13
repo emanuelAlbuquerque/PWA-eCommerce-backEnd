@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 
-
-interface Enderecos {
+interface EnderecoItem {
+  _id: mongoose.Schema.Types.ObjectId
   usuario: string
   cep: string
   rua: string
@@ -10,10 +10,15 @@ interface Enderecos {
   numero: string
 }
 
+export interface Enderecos {
+  _id: string
+  enderecos: EnderecoItem[]
+}
+
 
 const enderecosSchema: Schema = new Schema(
   {
-    usuario: { type: String, required: true, ref: 'usuarios' },
+    _id: { type: String, required: true, lowercase: true },
     enderecos: [
       {
         cep: { type: String, required: true },
@@ -26,4 +31,4 @@ const enderecosSchema: Schema = new Schema(
   }, { versionKey: false }
 )
 
-export const enderecos = mongoose.model<Enderecos>('avaliacoes', enderecosSchema)
+export const enderecos = mongoose.model<Enderecos>('enderecos', enderecosSchema)
