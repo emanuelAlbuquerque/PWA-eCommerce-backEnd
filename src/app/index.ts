@@ -1,6 +1,5 @@
 import express from 'express';
 import corsConfig from 'cors';
-import { options } from '../services/optionApi';
 import { conectedBd } from '../config/conexaoBd';
 import { AvaliacaosRouter } from '../Routes/AvaliacoesRouter';
 import { CategoriasRouter } from '../Routes/CategoriasRouter';
