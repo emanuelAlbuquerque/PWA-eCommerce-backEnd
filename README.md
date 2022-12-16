@@ -37,6 +37,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - NODE <img align="center" alt="Emanuel-HTML" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original-wordmark.svg">
 - TypeScript <img align="center" alt="Emanuel-HTML" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg">
 - MongoDB <img align="center" alt="Emanuel-HTML" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original-wordmark.svg">
+- Express <img align="center" alt="Emanuel-HTML" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original-wordmark.svg">
 
 ## 🚀 Como executar o projeto
 
