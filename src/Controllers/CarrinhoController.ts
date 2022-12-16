@@ -61,7 +61,7 @@ export class CarrinhoController {
 
     const { quantidade } = req.body
 
-    const itensCarrinho = (await carrinhos.find()).forEach(async (carrinho: Carrinho) => {//Lista todos os carrinhos de usuarios
+    const itensCarrinho = (await carrinhos.find().clone()).forEach(async (carrinho: Carrinho) => {//Lista todos os carrinhos de usuarios
       if (carrinho._id === email) {// Pega o carrinho de um unico usuario
         let listaProdutosCarrinhosUser = carrinho// Guarda esse carrinho em uma variavel para ser modificada
         listaProdutosCarrinhosUser.produtos.forEach(async (produto) => {// Pecorre os produtos que estão nesse carrinho
@@ -70,10 +70,8 @@ export class CarrinhoController {
               produto.quantidade = quantidade
             }//Muda a quantidade
 
-            await carrinhos.updateOne({ _id: email }, { $set: listaProdutosCarrinhosUser })
+            await carrinhos.updateOne({ _id: email }, { $set: listaProdutosCarrinhosUser }).clone()
             return res.status(200).send({ mensage: 'Produto atualizado com sucesso' })
-          } else {
-            return res.status(404).send({ mensage: 'Produto não encontrado' })
           }
         })
       }
