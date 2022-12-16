@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.CuponsRouter = void 0;
+const express_1 = require("express");
+const CupomController_1 = require("../Controllers/CupomController");
+exports.CuponsRouter = (0, express_1.Router)();
+exports.CuponsRouter.get('/listarCupons', CupomController_1.listarCupons);
+exports.CuponsRouter.post('/cadastrarCupom', CupomController_1.cadastrarCupom);
+exports.CuponsRouter.get('/cupom/:id', CupomController_1.listarCupomPorId);
+exports.CuponsRouter.delete('/deletarCupom/:id', CupomController_1.deletarCupom);
+exports.CuponsRouter.put('/atualizarCupom/:id', CupomController_1.atualizarCupom);

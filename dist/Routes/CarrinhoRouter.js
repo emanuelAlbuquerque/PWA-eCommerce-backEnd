@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.CarrinhoRouter = void 0;
+const express_1 = require("express");
+const CarrinhoController_1 = require("../Controllers/CarrinhoController");
+exports.CarrinhoRouter = (0, express_1.Router)();
+exports.CarrinhoRouter.put('/removerProdutos/:email/:id', CarrinhoController_1.CarrinhoController.removerProdutoCarrinho);
+exports.CarrinhoRouter.put('/atualizarProdutoCarrinho/:email/:id', CarrinhoController_1.CarrinhoController.atualizarProdutoCarrinho);
+exports.CarrinhoRouter.put('/adicionarProdutosCarrinho/:email', CarrinhoController_1.CarrinhoController.adicionarProdutoCarrinho);
+exports.CarrinhoRouter.get('/listarCarrinhoUsuario/:email', CarrinhoController_1.CarrinhoController.listarCarrinhoUsuario);
+exports.CarrinhoRouter.get('/listarCarrinhos', CarrinhoController_1.CarrinhoController.listarItensCarrinho);

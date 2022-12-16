@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.EnderecosRouter = void 0;
+const express_1 = require("express");
+const EnderecosController_1 = require("../Controllers/EnderecosController");
+exports.EnderecosRouter = (0, express_1.Router)();
+exports.EnderecosRouter.put('/removerEndereco/:email/:id', EnderecosController_1.EnderecosController.removerEndereco);
+exports.EnderecosRouter.put('/atualizarEndereco/:email/:id', EnderecosController_1.EnderecosController.atualizarEndereco);
+exports.EnderecosRouter.put('/adicionarEndereco/:email', EnderecosController_1.EnderecosController.adicionarEndereco);
+exports.EnderecosRouter.get('/listarEnderecoUsuario/:email', EnderecosController_1.EnderecosController.listarEnderecoUsuario);
+exports.EnderecosRouter.get('/listarEnderecos', EnderecosController_1.EnderecosController.listarItensEnderecos);

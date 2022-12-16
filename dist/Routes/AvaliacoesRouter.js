@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.AvaliacaosRouter = void 0;
+const express_1 = require("express");
+const AvaliacaoController_1 = require("../Controllers/AvaliacaoController");
+exports.AvaliacaosRouter = (0, express_1.Router)();
+exports.AvaliacaosRouter.get('/listarAvaliacao', AvaliacaoController_1.listarAvaliacao);
+exports.AvaliacaosRouter.post('/cadastrarAvaliacao', AvaliacaoController_1.cadastrarAvaliacao);
+exports.AvaliacaosRouter.get('/Avaliacao/:id', AvaliacaoController_1.listarAvaliacoesUsuario);
+exports.AvaliacaosRouter.delete('/deletarAvaliacao/:id', AvaliacaoController_1.deletarAvaliacao);
+exports.AvaliacaosRouter.put('/atualizarProduto/:id', AvaliacaoController_1.atualizarAvaliacao);
