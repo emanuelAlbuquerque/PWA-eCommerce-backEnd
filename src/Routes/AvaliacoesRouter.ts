@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import {
-  listarAvaliacaoPorId,
+  listarAvaliacoesUsuario,
   listarAvaliacao,
   deletarAvaliacao,
   atualizarAvaliacao,
@@ -12,6 +12,6 @@ export const AvaliacaosRouter = Router()
 
 AvaliacaosRouter.get('/listarAvaliacao', listarAvaliacao)
 AvaliacaosRouter.post('/cadastrarAvaliacao', cadastrarAvaliacao)
-AvaliacaosRouter.get('/Avaliacao/:id', listarAvaliacaoPorId)
+AvaliacaosRouter.get('/Avaliacao/:id', listarAvaliacoesUsuario)
 AvaliacaosRouter.delete('/deletarAvaliacao/:id', deletarAvaliacao)
 AvaliacaosRouter.put('/atualizarProduto/:id', atualizarAvaliacao)

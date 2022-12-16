@@ -1,4 +1,6 @@
 import express from 'express';
+import corsConfig from 'cors';
+import { options } from '../services/optionApi';
 import { conectedBd } from '../config/conexaoBd';
 import { AvaliacaosRouter } from '../Routes/AvaliacoesRouter';
 import { CategoriasRouter } from '../Routes/CategoriasRouter';
@@ -12,6 +14,7 @@ import { FavoritosRouter } from '../Routes/FavoritosRouter';
 
 export const app = express();
 conectedBd()
+app.use(corsConfig({ origin: '*' }))
 app.use(express.json())
 app.use(ProdutosRouter)
 app.use(CategoriasRouter)
@@ -21,6 +24,5 @@ app.use(UsuarioRouter)
 app.use(CarrinhoRouter)
 app.use(EnderecosRouter)
 app.use(FavoritosRouter)
-
 
 

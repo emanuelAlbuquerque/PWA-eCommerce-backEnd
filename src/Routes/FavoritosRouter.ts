@@ -8,4 +8,3 @@ FavoritosRouter.put('/removerProdutosFavorito/:email/:id', FavoritosController.r
 FavoritosRouter.put('/adicionarProdutosFavorito/:email', FavoritosController.adicionarProdutoFavoritos)
 FavoritosRouter.get('/listarFavoritoUsuario/:email', FavoritosController.listarFavoritosUsuario)
 FavoritosRouter.get('/listarFavoritos', FavoritosController.listarItensFavoritos)
-FavoritosRouter.post('/cadastrarFavoritos', FavoritosController.criarFavoritos)

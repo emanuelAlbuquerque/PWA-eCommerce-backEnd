@@ -7,10 +7,10 @@ export async function listarAvaliacao(req: Request, res: Response) {
   return res.status(200).send(listaAvaliacoes)
 }
 
-export async function listarAvaliacaoPorId(req: Request, res: Response) {
+export async function listarAvaliacoesUsuario(req: Request, res: Response) {
   try {
-    const { id } = req.params
-    const avaliacao = await avaliacoes.findById(id).clone()
+    const { email } = req.params
+    const avaliacao = await avaliacoes.findById(email).clone()
 
     if (!avaliacao) {
       return res.status(404).send({ mensage: `avaliacao não encontrada` })

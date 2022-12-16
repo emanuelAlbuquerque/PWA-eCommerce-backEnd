@@ -14,12 +14,6 @@ export class FavoritosController {
     res.status(200).send(itensFavoritos)
   }
 
-  static async criarFavoritos(req: Request, res: Response) {
-    const itemFavorito = await favoritos.create(req.body)
-
-    res.status(201).send('Favoritos criado com suscesso')
-  }
-
   static async listarFavoritosUsuario(req: Request, res: Response) {
     const { email } = req.params
     const favorito = await favoritos.find({ _id: email }).populate('produtos.produto').clone()

@@ -9,4 +9,3 @@ EnderecosRouter.put('/atualizarEndereco/:email/:id', EnderecosController.atualiz
 EnderecosRouter.put('/adicionarEndereco/:email', EnderecosController.adicionarEndereco)
 EnderecosRouter.get('/listarEnderecoUsuario/:email', EnderecosController.listarEnderecoUsuario)
 EnderecosRouter.get('/listarEnderecos', EnderecosController.listarItensEnderecos)
-EnderecosRouter.post('/cadastrarEndereco', EnderecosController.criarEndereco)

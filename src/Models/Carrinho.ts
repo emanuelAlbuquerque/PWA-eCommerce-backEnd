@@ -2,10 +2,16 @@ import mongoose, { Schema } from "mongoose";
 import { Produto } from "./Produto";
 
 
-interface Carrinho {
+interface ProdutosCarrinhoItem {
+  _id: mongoose.Schema.Types.ObjectId
   produto: Produto[]
   quantidade: number
-  usuario: string
+}
+
+
+export interface Carrinho {
+  _id: string
+  produtos: ProdutosCarrinhoItem[]
 }
 
 

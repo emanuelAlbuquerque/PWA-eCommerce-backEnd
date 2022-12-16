@@ -8,6 +8,7 @@ export interface ParamsAdicionaEnderecoProps {
   cidade: string
   estado: string
   numero: string
+  nome: string
 }
 
 export class EnderecosController {
@@ -18,11 +19,6 @@ export class EnderecosController {
     res.status(200).send(itensEndereco)
   }
 
-  static async criarEndereco(req: Request, res: Response) {
-    const itemEndereco = await enderecos.create(req.body)
-
-    res.status(201).send('Endereco criado com suscesso')
-  }
 
   static async listarEnderecoUsuario(req: Request, res: Response) {
     const { email } = req.params
@@ -44,7 +40,8 @@ export class EnderecosController {
         rua: req.body.rua,
         cidade: req.body.cidade,
         estado: req.body.estado,
-        numero: req.body.numero
+        numero: req.body.numero,
+        nome: req.body.nome
       }
 
       const item = await enderecos.updateOne({ _id: email }, { $push: { enderecos: itens } }).clone()
@@ -71,7 +68,7 @@ export class EnderecosController {
     const email = req.params.email
     const id = req.params.id
 
-    const { cep, rua, cidade, estado, numero } = req.body
+    const { cep, rua, cidade, estado, numero, nome } = req.body
 
 
     const listaEndereco = (await enderecos.find()).forEach((endereco: Enderecos) => {
@@ -79,6 +76,10 @@ export class EnderecosController {
         let listaEnderecosUser = endereco
         listaEnderecosUser.enderecos.forEach(async (item) => {
           if (String(item._id) === id) {
+
+            if (nome) {
+              item.nome = nome
+            }
 
             if (cep) {
               item.cep = cep

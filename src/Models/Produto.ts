@@ -2,6 +2,7 @@ import mongoose, { Schema } from "mongoose";
 
 
 export type Produto = {
+  _id: mongoose.Schema.Types.ObjectId
   nome: string
   descricao: string
   img: string
@@ -25,15 +26,15 @@ export type Produto = {
 
 const produtoSchema: Schema = new Schema(
   {
-    nome: {type: String, required: true},
+    nome: { type: String, required: true },
     descricao: { type: String, required: true },
     img: { type: String, required: true },
     preco: { type: Number, required: true },
-    precoTotal: {type: Number},
-    quantidadeVendas: {type: Number},
-    desconto: {type: Number},
-    ratings: {type: Number},
-    defaultRatings: {type: Number, required: true},
+    precoTotal: { type: Number },
+    quantidadeVendas: { type: Number },
+    desconto: { type: Number },
+    ratings: { type: Number },
+    defaultRatings: { type: Number, required: true },
     quantidade: { type: Number, required: true },
     tamanho: { type: String, required: true },
     cor: { type: String, required: true },

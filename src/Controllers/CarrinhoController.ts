@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { isValidObjectId } from "mongoose";
-import { carrinhos } from "../Models/Carrinho";
+import { Carrinho, carrinhos } from "../Models/Carrinho";
 
 export interface ParamsAdicionaProps {
   produto: string
@@ -13,12 +13,6 @@ export class CarrinhoController {
     const itensCarrinho = await carrinhos.find().populate('produtos.produto').clone()
 
     res.status(200).send(itensCarrinho)
-  }
-
-  static async criarCarrinho(req: Request, res: Response) {
-    const itemCarrinho = await carrinhos.create(req.body)
-
-    res.status(201).send('Carrinho criado com suscesso')
   }
 
   static async listarCarrinhoUsuario(req: Request, res: Response) {
@@ -58,5 +52,31 @@ export class CarrinhoController {
     await carrinhos.updateOne({ _id: email }, { $pull: { produtos: { _id: id } } }).clone()
 
     return res.status(200).send({ mensage: `Produto removido com sucesso` })
+  }
+
+  static async atualizarProdutoCarrinho(req: Request, res: Response) {
+
+    const email = req.params.email
+    const id = req.params.id
+
+    const { quantidade } = req.body
+
+    const itensCarrinho = (await carrinhos.find()).forEach(async (carrinho: Carrinho) => {//Lista todos os carrinhos de usuarios
+      if (carrinho._id === email) {// Pega o carrinho de um unico usuario
+        let listaProdutosCarrinhosUser = carrinho// Guarda esse carrinho em uma variavel para ser modificada
+        listaProdutosCarrinhosUser.produtos.forEach(async (produto) => {// Pecorre os produtos que estão nesse carrinho
+          if (String(produto._id) === id) {// Pega o produto que tem o id igual ao passado na url
+            if (quantidade) {
+              produto.quantidade = quantidade
+            }//Muda a quantidade
+
+            await carrinhos.updateOne({ _id: email }, { $set: listaProdutosCarrinhosUser })
+            return res.status(200).send({ mensage: 'Produto atualizado com sucesso' })
+          } else {
+            return res.status(404).send({ mensage: 'Produto não encontrado' })
+          }
+        })
+      }
+    })
   }
 }

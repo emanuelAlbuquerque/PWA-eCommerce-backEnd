@@ -1,5 +1,8 @@
 import { Request, Response } from "express";
 import { Error } from "mongoose";
+import { carrinhos } from "../Models/Carrinho";
+import { enderecos } from "../Models/Enderecos";
+import { favoritos } from "../Models/Favoritos";
 import { usuarios } from "../Models/Usuario";
 
 export class UsuarioController {
@@ -65,8 +68,20 @@ export class UsuarioController {
 
   static async cadastarUsuario(req: Request, res: Response) {
     try {
+
+      const email: string = req.body.email
+
+      const criaRefs = {
+        _id: email
+      }
+
       const usuario = await usuarios.create(req.body)
+      const itemCarrinho = await carrinhos.create(criaRefs)
+      const itemEndereco = await enderecos.create(criaRefs)
+      const itemFavorito = await favoritos.create(criaRefs)
+
       return res.status(201).send('Usuario cadastrado com sucesso')
+
     } catch (err) {
       return res.status(500).send(`${err} Erro ao cadastrar o usuário`)
     }
